@@ -64,7 +64,7 @@ def _seed_articles():
             "The foundational method the rest of the course builds on.",
             "Placeholder content. Swap in your actual lesson text, images, "
             "or embedded video here.",
-            "/static/images/lesson2.jpg", 
+            "/static/images/lesson1.jpg", 
         ),
         (
             "Anjali",
@@ -72,7 +72,7 @@ def _seed_articles():
             "Where things get interesting once the basics click.",
             "Placeholder content. This is where a paying reader would find "
             "your most advanced material.",
-            "/static/images/lesson3.jpg", 
+            "/static/images/lesson1.jpg", 
         ),
     ]
     for title, slug, excerpt, content, image_url in samples:
