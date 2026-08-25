@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="intro">
+  <p class="eyebrow">Course</p>
+  <h1>Read the whole thing, not just the preview.</h1>
+  <p class="lede">Every lesson below is free to preview. Unlock once to read all of them in full — including anything added later.</p>
+</section>
+
+<div class="lesson-grid">
+  {% for a in articles %}
+  <a class="lesson-card" href="{{ url_for('article', slug=a.slug) }}">
+    <span class="lesson-card__eyebrow">Lesson {{ loop.index }}</span>
+    <h2>{{ a.title }}</h2>
+    <p>{{ a.excerpt }}</p>
+  </a>
+  {% endfor %}
+</div>
+{% endblock %}

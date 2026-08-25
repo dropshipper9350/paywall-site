@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Admin — pending payments{% endblock %}
+{% block content %}
+<p class="eyebrow">Admin</p>
+<h1>Payments awaiting verification</h1>
+<p class="lede">Check each reference number against your own bank/UPI app before approving. Approving grants that account full access immediately.</p>
+
+{% if orders %}
+  <div class="admin-list">
+    {% for o in orders %}
+    <div class="admin-row">
+      <div>
+        <strong>{{ o.utr_number }}</strong>
+        <span class="admin-row__meta">₹{{ "%.2f"|format(o.amount_rupees) }} · order {{ o.order_ref }} · submitted {{ o.submitted_at.strftime('%d %b, %H:%M') }} UTC</span>
+      </div>
+      <div class="admin-row__actions">
+        <form method="POST" action="{{ url_for('admin_approve', order_id=o.id) }}">
+          <button type="submit" class="btn-primary btn-small">Approve</button>
+        </form>
+        <form method="POST" action="{{ url_for('admin_reject', order_id=o.id) }}">
+          <button type="submit" class="btn-ghost btn-small">Reject</button>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p class="lede">Nothing waiting right now.</p>
+{% endif %}
+{% endblock %}

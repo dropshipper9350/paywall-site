@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Unlock access{% endblock %}
+{% block content %}
+<div class="unlock-card">
+  <p class="eyebrow">Unlock full access</p>
+
+  {% if order.status == 'pending' %}
+    <h1>Scan to pay ₹{{ "%.2f"|format(order.amount_rupees) }}</h1>
+    <p class="lede">Pays {{ payee_name }} directly at {{ vpa }} — no gateway, no extra fee.</p>
+
+    <img class="upi-qr" src="{{ qr_data_uri }}" alt="UPI QR code for {{ vpa }}, amount ₹{{ '%.2f'|format(order.amount_rupees) }}">
+
+    <a class="btn-primary upi-app-link" href="{{ upi_uri }}">Open in UPI app</a>
+    <p class="upi-hint">On a phone, the button above opens Google Pay / PhonePe / Paytm / BHIM directly. On desktop, scan the QR with any UPI app.</p>
+
+    <div class="utr-note">
+      The amount is ₹{{ "%.2f"|format(order.amount_rupees) }}, not a round number —
+      that's intentional, it's how payments get matched to accounts.
+      Please pay the exact amount shown.
+    </div>
+
+    <form class="utr-form" method="POST" action="{{ url_for('unlock_submit') }}">
+      <input type="hidden" name="order_id" value="{{ order.id }}">
+      <label>
+        UPI transaction / reference number (UTR)
+        <input type="text" name="utr" placeholder="e.g. 425678901234" required>
+      </label>
+      <p class="utr-help">Find this in your UPI app's payment history right after paying.</p>
+      <button type="submit" class="btn-primary">I've paid — submit for review</button>
+    </form>
+
+  {% elif order.status == 'submitted' %}
+    <h1>Payment submitted</h1>
+    <p class="lede">Reference <strong>{{ order.utr_number }}</strong> is being checked. Access unlocks as soon as it's verified — usually quick, but it isn't automatic.</p>
+  {% endif %}
+</div>
+{% endblock %}
