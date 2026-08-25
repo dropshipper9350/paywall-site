@@ -50,7 +50,7 @@ def _seed_articles():
         return
     samples = [
         (
-            "Getting Started",
+            "Simran",
             "getting-started",
             "A quick orientation before you dive in.",
             "This is placeholder lesson content — replace it with your real "
@@ -59,7 +59,7 @@ def _seed_articles():
             "/static/images/lesson1.jpg",
         ),
         (
-            "Core Technique",
+            "Nikita",
             "core-technique",
             "The foundational method the rest of the course builds on.",
             "Placeholder content. Swap in your actual lesson text, images, "
@@ -67,7 +67,7 @@ def _seed_articles():
             "/static/images/lesson1.jpg", 
         ),
         (
-            "Advanced Playbook",
+            "Anjali",
             "advanced-playbook",
             "Where things get interesting once the basics click.",
             "Placeholder content. This is where a paying reader would find "
