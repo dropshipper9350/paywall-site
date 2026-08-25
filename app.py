@@ -56,6 +56,7 @@ def _seed_articles():
             "This is placeholder lesson content — replace it with your real "
             "material. Full lessons only render below once a reader has "
             "unlocked access.",
+            "/static/images/lesson1.jpg",
         ),
         (
             "Core Technique",
@@ -63,6 +64,7 @@ def _seed_articles():
             "The foundational method the rest of the course builds on.",
             "Placeholder content. Swap in your actual lesson text, images, "
             "or embedded video here.",
+            "/static/images/lesson1.jpg", 
         ),
         (
             "Advanced Playbook",
@@ -70,10 +72,11 @@ def _seed_articles():
             "Where things get interesting once the basics click.",
             "Placeholder content. This is where a paying reader would find "
             "your most advanced material.",
+            "/static/images/lesson1.jpg", 
         ),
     ]
-    for title, slug, excerpt, content in samples:
-        db.session.add(Article(title=title, slug=slug, excerpt=excerpt, content=content))
+    for title, slug, excerpt, content, image_url in samples:
+        db.session.add(Article(title=title, slug=slug, excerpt=excerpt, content=content, image_url=image_url))
     db.session.commit()
 
 
