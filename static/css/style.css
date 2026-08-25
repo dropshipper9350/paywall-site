@@ -1,0 +1,443 @@
+:root {
+  --bg: #12151c;
+  --surface: #1b202b;
+  --surface-raised: #232a37;
+  --border: #2b3342;
+  --text: #ede8de;
+  --text-muted: #8b93a7;
+  --accent: #e8a33d;
+  --accent-soft: rgba(232, 163, 61, 0.14);
+  --success: #7fa87f;
+  --danger: #d97757;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.55;
+}
+
+a { color: inherit; }
+
+/* ---------- header ---------- */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header .brand {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.site-header nav a {
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: color 0.15s ease;
+}
+
+.site-header nav a:hover { color: var(--text); }
+
+.nav-cta {
+  color: var(--bg) !important;
+  background: var(--accent);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.badge {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* ---------- flash messages ---------- */
+
+.flash-wrap {
+  max-width: 640px;
+  margin: 1.5rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.flash {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.flash--error {
+  background: rgba(217, 119, 87, 0.12);
+  border: 1px solid var(--danger);
+  color: var(--danger);
+}
+
+/* ---------- layout ---------- */
+
+main {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+}
+
+.intro h1,
+.lesson h1,
+.unlock-card h1,
+.auth-form h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 2.1rem;
+  line-height: 1.2;
+  margin: 0 0 0.9rem;
+}
+
+.lede {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 52ch;
+  margin: 0 0 2.5rem;
+}
+
+/* ---------- lesson grid ---------- */
+
+.lesson-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.lesson-card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.lesson-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.lesson-card__eyebrow {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.lesson-card h2 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  margin: 0 0 0.4rem;
+}
+
+.lesson-card p {
+  color: var(--text-muted);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* ---------- lesson body ---------- */
+
+.lesson-body {
+  font-size: 1.05rem;
+}
+
+/* Locked lesson: a dim, blurred preview under a spotlight-shaped
+   veil — the "reading lamp is off" motif that carries through the
+   whole locked state. */
+
+.lesson-locked {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  min-height: 260px;
+}
+
+.lesson-locked__preview {
+  margin: 0;
+  padding: 2rem;
+  font-size: 1.05rem;
+  filter: blur(3px);
+  opacity: 0.5;
+  user-select: none;
+}
+
+.lesson-locked__veil {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  text-align: center;
+  padding: 1.5rem;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(18, 21, 28, 0.55) 0%,
+    rgba(18, 21, 28, 0.94) 72%
+  );
+}
+
+.lock-icon { color: var(--accent); }
+
+.lesson-locked__veil p {
+  margin: 0 0 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* ---------- buttons ---------- */
+
+.btn-primary {
+  display: inline-block;
+  background: var(--accent);
+  color: #1a1206;
+  border: none;
+  border-radius: 999px;
+  padding: 0.8rem 1.6rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: filter 0.15s ease;
+}
+
+.btn-primary:hover { filter: brightness(1.08); }
+
+/* ---------- auth forms ---------- */
+
+.auth-form {
+  max-width: 380px;
+  margin: 2rem auto 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.1rem;
+}
+
+.auth-form input {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  color: var(--text);
+  font-size: 1rem;
+  font-family: var(--font-body);
+}
+
+.auth-form input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.auth-form .btn-primary {
+  margin-top: 0.5rem;
+}
+
+.auth-switch {
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.auth-switch a { color: var(--accent); text-decoration: none; }
+
+/* ---------- unlock / pay page ---------- */
+
+.unlock-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.unlock-card .lede { margin-left: auto; margin-right: auto; }
+
+.dev-banner {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  font-size: 0.85rem;
+  color: var(--text);
+  text-align: left;
+  margin-bottom: 1.25rem;
+}
+
+.dev-banner code {
+  background: rgba(0, 0, 0, 0.25);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+/* ---------- UPI pay page ---------- */
+
+.upi-qr {
+  width: 220px;
+  height: 220px;
+  background: #fff;
+  padding: 12px;
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+
+.upi-app-link {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.upi-hint {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  max-width: 42ch;
+  margin: 0 auto 1.5rem;
+}
+
+.utr-note {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  font-size: 0.85rem;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.utr-form {
+  text-align: left;
+}
+
+.utr-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.utr-form input {
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  color: var(--text);
+  font-size: 1rem;
+  font-family: var(--font-body);
+}
+
+.utr-help {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin: 0 0 1rem;
+}
+
+/* ---------- admin panel ---------- */
+
+.admin-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.admin-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  flex-wrap: wrap;
+}
+
+.admin-row__meta {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  margin-top: 0.25rem;
+}
+
+.admin-row__actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.btn-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+.btn-ghost:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+@media (max-width: 600px) {
+  .site-header { padding: 1.1rem 1.25rem; }
+  main { padding: 2rem 1.25rem 4rem; }
+  .intro h1, .lesson h1, .unlock-card h1, .auth-form h1 { font-size: 1.7rem; }
+}
