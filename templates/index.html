@@ -12,7 +12,7 @@
     {% if a.image_url %}
     <img class="lesson-card__img" src="{{ a.image_url }}" alt="{{ a.title }}">
     {% endif %}
-    <span class="lesson-card__eyebrow"> Girl {{ loop.index }}</span>
+    <span class="lesson-card__eyebrow">{{ loop.index }}</span>
     <h2>{{ a.title }}</h2>
     <p>{{ a.excerpt }}</p>
   </a>
