@@ -20,6 +20,7 @@ class Article(db.Model):
     slug = db.Column(db.String(255), unique=True, nullable=False)
     excerpt = db.Column(db.Text)
     content = db.Column(db.Text)
+    image_url = db.Column(db.String(500))
 
 
 class Order(db.Model):
