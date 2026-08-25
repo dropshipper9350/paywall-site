@@ -9,6 +9,9 @@
 <div class="lesson-grid">
   {% for a in articles %}
   <a class="lesson-card" href="{{ url_for('article', slug=a.slug) }}">
+    {% if a.image_url %}
+    <img class="lesson-card__img" src="{{ a.image_url }}" alt="{{ a.title }}">
+    {% endif %}
     <span class="lesson-card__eyebrow">Lesson {{ loop.index }}</span>
     <h2>{{ a.title }}</h2>
     <p>{{ a.excerpt }}</p>
